@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {User} from './models/User';
+import {UserService} from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angularAL';
+
+  users: User[];
+
+
+  constructor(private userService: UserService) {
+    this.userService.getUsers().subscribe(value => this.users = value);
+  }
 }
+
+
