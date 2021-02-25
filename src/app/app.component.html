@@ -1,1 +1,6 @@
-<app-user *ngFor="let user of users" [u]="user"></app-user>
+<ul>
+  <li><a [routerLink]="['users']">users</a></li>
+  <!--  <li><a href="">posts</a></li>-->
+</ul>
+<router-outlet></router-outlet>
+

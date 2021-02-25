@@ -3,17 +3,23 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import {UserComponent} from './components/user/user.component';
-import {UserService} from './services/user.service';
+import {RouterModule, Routes} from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'users', loadChildren: () => import('./user-module/user.module').then(m => m.UserModule)
+
+  },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
