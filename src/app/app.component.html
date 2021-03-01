@@ -4,3 +4,35 @@
 </ul>
 <router-outlet></router-outlet>
 
+<hr>
+
+<!--<form #myForm="ngForm" (ngSubmit)="testTest(myForm)">-->
+<!--  <div>-->
+<!--    <input #input1-->
+<!--           type="text"-->
+<!--           [(ngModel)]="test.id"-->
+<!--           name="id" [class.target]="myForm.invalid"-->
+<!--           required-->
+<!--    >-->
+
+<!--    <div *ngIf="myForm.invalid">-->
+<!--      this field is required-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--  <div><input #input2 type="text" [(ngModel)]="test.title" name="title"></div>-->
+<!--  <button [disabled]="myForm.controls?.id?.invalid"> test me</button>-->
+<!--</form>-->
+
+
+<form #myForm="ngForm" (ngSubmit)="testTest(myForm)">
+  <select name="id" [(ngModel)]="test.id">
+    <option [value]="idV" *ngFor="let idV of idValues"> choose this id - {{idV}}</option>
+  </select>
+
+  <button>asljdghsag</button>
+
+</form>
+
+
+

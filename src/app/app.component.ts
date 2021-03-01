@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {User} from './models/User';
-import {UserService} from './user-module/services/user.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +9,20 @@ import {UserService} from './user-module/services/user.service';
 })
 export class AppComponent {
 
+  test = {
+    id: 0, title: 'title x'
+
+  };
+
+  idValues = [1, 2, 3, 4, 5];
+
   users: User[];
 
 
-
+  testTest(myFrom: NgForm): void {
+    console.log(myFrom);
+    console.log(this.test);
+  }
 }
 
 
