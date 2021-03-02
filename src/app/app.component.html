@@ -25,14 +25,25 @@
 <!--</form>-->
 
 
-<form #myForm="ngForm" (ngSubmit)="testTest(myForm)">
-  <select name="id" [(ngModel)]="test.id">
-    <option [value]="idV" *ngFor="let idV of idValues"> choose this id - {{idV}}</option>
-  </select>
+<!--<form #myForm="ngForm" (ngSubmit)="testTest(myForm)">-->
+<!--  <select name="id" [(ngModel)]="test.id">-->
+<!--    <option [value]="idV" *ngFor="let idV of idValues"> choose this id - {{idV}}</option>-->
+<!--  </select>-->
 
-  <button>asljdghsag</button>
+<!--  <button>asljdghsag</button>-->
+<!--</form>-->
 
+
+<form [formGroup]="myForm" (ngSubmit)="doStuff()">
+  <input type="text" [formControl]="id">
+  <input type="text" formControlName="name">
+  <button>click</button>
 </form>
+
+<div >
+  {{myForm.controls.id.errors?.duckPresent}}
+
+</div>
 
 
 

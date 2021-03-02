@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {User} from './models/User';
-import {NgForm} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,20 +9,43 @@ import {NgForm} from '@angular/forms';
 })
 export class AppComponent {
 
-  test = {
-    id: 0, title: 'title x'
+  // test = {
+  //   id: 0, title: 'title x'
+  //
+  // };
+  //
+  // idValues = [1, 2, 3, 4, 5];
+  //
+  // users: User[];
+  //
+  //
+  // testTest(myFrom: NgForm): void {
+  //   console.log(myFrom);
+  //   console.log(this.test);
+  // }
 
-  };
-
-  idValues = [1, 2, 3, 4, 5];
-
-  users: User[];
+  id = new FormControl(100500, [Validators.required, this.customValidator]);
 
 
-  testTest(myFrom: NgForm): void {
-    console.log(myFrom);
-    console.log(this.test);
+  myForm = new FormGroup({
+    id: this.id,
+    name: new FormControl('vasya', [Validators.required, Validators.minLength(10)])
+  });
+
+  doStuff(): void {
+    console.log(this.myForm);
   }
+
+  customValidator(data: AbstractControl): any {
+    const value = data.value + '';
+    console.log(value);
+    if (value.includes('duck')) {
+      return {duckPresent: 'you have du*k word in your string'};
+    }
+    return null;
+
+  }
+
 }
 
 
