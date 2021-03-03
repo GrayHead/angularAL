@@ -40,10 +40,24 @@
   <button>click</button>
 </form>
 
-<div >
+<div>
   {{myForm.controls.id.errors?.duckPresent}}
 
 </div>
+
+<hr>
+
+{{user | json  }}
+<br>
+{{x | async | json}}
+<br>
+{{100 | currency}}
+<br>
+{{date | date: 'medium'}}
+
+
+<div ></div>
+<div appSilver>{{'hello' | cutom :'boys'}}</div>
 
 
 

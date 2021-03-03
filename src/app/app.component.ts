@@ -25,12 +25,22 @@ export class AppComponent {
   // }
 
   id = new FormControl(100500, [Validators.required, this.customValidator]);
-
-
   myForm = new FormGroup({
     id: this.id,
     name: new FormControl('vasya', [Validators.required, Validators.minLength(10)])
   });
+  user = {id: 123, name: 'hasfdhgfsah'};
+
+  x = new Promise(resolve => {
+    let user = {};
+    setTimeout(() => {
+      user = {id: 100, name: 'kokos'};
+
+      resolve(user);
+    }, 2000);
+
+  });
+  date = new Date();
 
   doStuff(): void {
     console.log(this.myForm);
@@ -45,6 +55,7 @@ export class AppComponent {
     return null;
 
   }
+
 
 }
 
