@@ -2,11 +2,13 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CutomPipe } from './cutom.pipe';
-import { SilverDirective } from './silver.directive';
+import {CutomPipe} from './cutom.pipe';
+import {SilverDirective} from './silver.directive';
+import {MainInterceptor} from './serivices/interceptors/main.interceptor';
+import { XxxComponent } from './xxx/xxx.component';
 
 const routes: Routes = [
   {
@@ -16,12 +18,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        CutomPipe,
-        CutomPipe,
-        SilverDirective,
-    ],
+  declarations: [
+    AppComponent,
+    CutomPipe,
+    CutomPipe,
+    SilverDirective,
+    XxxComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -29,7 +32,14 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MainInterceptor,
+      multi: true
+    }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

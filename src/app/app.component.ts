@@ -1,13 +1,21 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {User} from './models/User';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import {DataService} from './serivices/data.service';
+import {XxxComponent} from './xxx/xxx.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit {
+
+
+  @ViewChild(XxxComponent)
+  xxx: XxxComponent;
+
+
 
   // test = {
   //   id: 0, title: 'title x'
@@ -31,6 +39,7 @@ export class AppComponent {
   });
   user = {id: 123, name: 'hasfdhgfsah'};
 
+
   x = new Promise(resolve => {
     let user = {};
     setTimeout(() => {
@@ -41,6 +50,21 @@ export class AppComponent {
 
   });
   date = new Date();
+
+
+  constructor(private dataService: DataService) {
+
+
+  }
+
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.xxx.someData);
+  }
+
 
   doStuff(): void {
     console.log(this.myForm);
@@ -57,6 +81,13 @@ export class AppComponent {
   }
 
 
+  checkBS(): void {
+    console.log(this.dataService.getData());
+    this.dataService.setData('hi');
+    console.log(this.dataService.getData());
+
+
+  }
 }
 
 
